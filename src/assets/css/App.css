@@ -228,15 +228,11 @@ hero
     background: #000000 !important;
 }
 
-
-
 .heroBlock h3 {
     font-size: 30px;
     line-height: 1.2;
     margin: 0 0 30px;
 }
-
-
 
 .heroBlock p {
     margin: 0 0 30px;
@@ -341,9 +337,6 @@ about
 .aboutBlock .content {
     text-align: center;
 }
-
-
-
 
 
 

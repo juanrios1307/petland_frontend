@@ -28,12 +28,15 @@ function AppHero() {
 
                                 <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }}>
 
+                                    <a href='/pet/list'>
                                     <Card
                                         hoverable
                                         cover={<img alt="Modern Design" src={pug} />}
                                     >
                                         <Meta title={"Adopta Mascotas"} />
                                     </Card>
+
+                                    </a>
 
                                 </Col>
 

@@ -2,13 +2,14 @@ import React, {useState,useEffect} from "react";
 import {Card, Row, Col, Image} from 'antd';
 
 import Axios from "axios";
-import { EyeOutlined } from '@ant-design/icons';
+import { EyeOutlined,EditOutlined,DeleteOutlined } from '@ant-design/icons';
 import {Redirect} from "react-router-dom";
+import Swal from "sweetalert2";
 const { Meta } = Card;
 
 
 
-function PetList(props) {
+function PetListMine(props) {
 
 
     const [pets,setPets]=useState([])
@@ -18,12 +19,26 @@ function PetList(props) {
         textAlign: 'center',
     };
 
-    const url='http://localhost:5000/api/pet/'
+
     const getAllPets = async() =>{
 
         setPets([])
 
-        var response = await Axios.get(url)
+        const url='http://localhost:5000/api/pet/mine/'
+
+        const token=localStorage.getItem('token')
+
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'access-token':token
+            }
+        };
+
+        const response = await Axios(config)
+
+
         var data = response.data.data
 
         await setPets(data)
@@ -44,12 +59,62 @@ function PetList(props) {
 
 
     const [seeBool, setSeeBool]=useState(false);
+    const [updateBool, setupdateBool]=useState(false);
+
 
     const see = (id) =>{
         console.log(id)
         localStorage.setItem("pet",id)
         setSeeBool(true)
     }
+
+    const edit = (id) =>{
+        console.log("edit")
+
+        localStorage.setItem("edit_id",id)
+
+        setupdateBool(true)
+    }
+
+    const eliminar = async (id) =>{
+
+        var url='http://localhost:5000/api/pet/'
+
+        const token = localStorage.getItem("token")
+
+        const config = {
+            method: 'delete',
+            url: url,
+            headers: {
+                'access-token': token,
+                'pet':id
+            }
+        };
+
+        const response = await Axios(config)
+
+        const mensaje = response.data.data
+        const status=response.status
+
+        console.log(mensaje)
+
+        if(status===200){
+            Swal.fire({
+                title: mensaje,
+
+            })
+
+            window.location.reload(false)
+
+        }else{
+            Swal.fire({
+                title: mensaje,
+
+            })
+
+        }
+    }
+
 
     if(seeBool){
         return(
@@ -69,10 +134,11 @@ function PetList(props) {
                                     style={gridStyle}
 
                                     actions={[
-                                        <EyeOutlined key="select"
-                                                     onClick={() => see(item._id)}/>,
-
+                                        <EyeOutlined key="select" onClick={() => see(item._id)}/>,
+                                        <EditOutlined key="update" onClick={() => edit(item._id)}/>,
+                                        <DeleteOutlined key="delete" onClick={() => eliminar(item._id)}/>,
                                     ]}
+
 
                                 >
                                     <Row gutter={[16, 16]}>
@@ -115,4 +181,4 @@ function PetList(props) {
     }
 }
 
-export default PetList;
+export default PetListMine;

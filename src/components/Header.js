@@ -10,6 +10,18 @@ const options = [
     {
         value: 1,
         label: 'Cerrar Sesión',
+    },
+    {
+        value: 2,
+        label: 'Mis Mascotas',
+    },
+    {
+        value: 3,
+        label: 'Reportar Mascota',
+    },
+    {
+        value: 4,
+        label: 'Registrar Mascota',
     }
 
 ];
@@ -19,6 +31,9 @@ function AppHeader() {
     const [token, setToken] = useState('');
 
     const [boolBusqueda, setBoolBusqueda] = useState(false);
+    const [boolRegistrarMascota, setBoolRegistrarMascota] = useState(false);
+    const [boolReportarMascota, setBoolReportarMascota] = useState(false);
+    const [boolMisMascotas, setBoolMisMascotas] = useState(false);
 
     const cerrarSesion = () =>{
         localStorage.removeItem("token")
@@ -26,10 +41,22 @@ function AppHeader() {
         setToken('')
     }
 
+    const misMascotas = () =>{
+        setBoolMisMascotas(true)
+    }
+
+
+
     const onChange =(value) =>{
 
         if(value[0]===1){
             cerrarSesion()
+        }else if(value[0] === 2){
+            misMascotas()
+        }else if(value[0]===3){
+            setBoolReportarMascota(true)
+        }else if(value[0]===4){
+            setBoolRegistrarMascota(true)
         }
     }
 
@@ -47,10 +74,9 @@ function AppHeader() {
 
     const buscar = async(values) => {
 
-        const res = await Http.instance.get("http://localhost:5000/api/");
 
-        setBoolBusqueda(true)
 
+        setBoolMisMascotas(true)
 
 
     }
@@ -67,6 +93,18 @@ function AppHeader() {
     if(boolBusqueda){
         return (
             <Redirect to="/busqueda"/>
+        )
+    }else if(boolMisMascotas){
+        return (
+            <Redirect to="/pet/mylist"/>
+        )
+    }else if(boolReportarMascota){
+        return (
+            <Redirect to="/pet/report"/>
+        )
+    }else if(boolRegistrarMascota){
+        return (
+            <Redirect to="/pet/register"/>
         )
     }else {
 

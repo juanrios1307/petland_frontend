@@ -1,20 +1,20 @@
 import React from "react";
 import '../assets/css/App.css';
-import { Layout } from 'antd';
-import {Footer} from "antd/es/layout/layout";
-import PetDetail from "../components/PetDetail";
-import AppFooter from "../components/main/footer";
 import AppHeader from "../components/Header";
-const { Header, Content } = Layout;
 
-function PetDetailPage() {
+import AppFooter from "../components/main/footer";
+import Layout from "antd/es/layout/layout";
+import PetReport from "../components/PetReport";
+const { Header, Content, Footer } = Layout;
+
+function PetRegisterPage() {
     return (
         <Layout className="mainLayout">
             <Header>
                 <AppHeader/>
             </Header>
             <Content>
-                <PetDetail/>
+                <PetReport />
             </Content>
             <Footer>
                 <AppFooter/>
@@ -23,4 +23,4 @@ function PetDetailPage() {
     );
 }
 
-export default PetDetailPage;
+export default PetRegisterPage;

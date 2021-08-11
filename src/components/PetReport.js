@@ -38,7 +38,7 @@ const tailFormItemLayout = {
     },
 };
 
-const PetRegister = () => {
+const PetReport = () => {
     const [form] = Form.useForm();
 
     const [bool,setBool] = useState(false);
@@ -72,14 +72,18 @@ const PetRegister = () => {
         const token = localStorage.getItem("token")
 
 
-        values.tipo=values.tipo.toLowerCase()
+        if(values.tipo != undefined) {
+
+            values.tipo = values.tipo.toLowerCase()
+        }
+
         values.imagen = await uploadImage()
 
 
         console.log(values)
 
 
-        const url='http://localhost:5000/api/pet/'
+        const url='http://localhost:5000/api/pet/report'
 
         const config = {
             method: 'post',
@@ -162,15 +166,17 @@ const PetRegister = () => {
         const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/drn7vichy/image/upload';
         const UPLOAD_PRESET = 'tiyycnrd';
 
-        const formImages = new FormData();
+        if(fileList.length>0) {
 
-        formImages.append('file', fileList[0].originFileObj);
-        formImages.append('upload_preset', UPLOAD_PRESET);
+            const formImages = new FormData();
 
-        const resI = await Axios.post(CLOUDINARY_URL, formImages);
+            formImages.append('file', fileList[0].originFileObj);
+            formImages.append('upload_preset', UPLOAD_PRESET);
 
-        return resI.data.secure_url
+            const resI = await Axios.post(CLOUDINARY_URL, formImages);
 
+            return resI.data.secure_url
+        }
     };
 
 
@@ -184,7 +190,7 @@ const PetRegister = () => {
 
     if(bool){
         return(
-            <Redirect to="/pet/mylist"/>
+            <Redirect to="/pet/list"/>
         )
     }else if(localStorage.getItem("token")){
         return (
@@ -207,7 +213,7 @@ const PetRegister = () => {
                             <Form.Item
                                 name="nombre"
                                 label="Nombre "
-                                rules={[{required: true, message: 'Por favor ingresa el nombre de la mascota!', whitespace: true}]}
+                                rules={[{required: false, whitespace: true}]}
                             >
                                 <Input/>
                             </Form.Item>
@@ -223,7 +229,7 @@ const PetRegister = () => {
                             <Form.Item
                                 name="raza"
                                 label="Raza "
-                                rules={[{required: true, message: 'Por favor ingresa la raza!'}]}
+                                rules={[{required: false, message: 'Por favor ingresa la raza!'}]}
                             >
                                 <Input/>
                             </Form.Item>
@@ -233,7 +239,7 @@ const PetRegister = () => {
                                 label="Color"
                                 rules={[
                                     {
-                                        required: true,
+                                        required: false,
                                         message: 'Por favor ingresa el color!',
                                     },
                                 ]}
@@ -246,7 +252,7 @@ const PetRegister = () => {
                             <Form.Item
                                 name="edad"
                                 label="Edad"
-                                rules={[{required: true, message: 'Por favor ingresa la edad en años!'}]}
+                                rules={[{required: false, message: 'Por favor ingresa la edad en años!'}]}
                             >
 
                                 <Input />
@@ -258,7 +264,7 @@ const PetRegister = () => {
                             <Form.Item
                                 name="size"
                                 label="Tamaño "
-                                rules={[{required: true, message: 'Por Favor ingresa un tamaño!'}]}>
+                                rules={[{required: false, message: 'Por Favor ingresa un tamaño!'}]}>
                                 <Select onChange={e=>setSize(e)}>
                                     <Option key="grande">Grande</Option>
                                     <Option key="mediano">Mediano</Option>
@@ -269,7 +275,7 @@ const PetRegister = () => {
                             <Form.Item
                                 name="tipo"
                                 label="Tipo "
-                                rules={[{required: true, message: 'Por Favor Elije El tipo de tu Establecimiento!'}]}>
+                                rules={[{required: false, message: 'Por Favor Elije El tipo de tu Establecimiento!'}]}>
                                 <Select onChange={e=>setTipo(e)}>
                                     {tipos.map(i =>(
                                         <Option key={i} value={i}>{i}</Option>
@@ -329,4 +335,4 @@ const PetRegister = () => {
     }
 };
 
-export default PetRegister
+export default PetReport
