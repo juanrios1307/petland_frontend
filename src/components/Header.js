@@ -91,7 +91,7 @@ function AppHeader() {
 
     if(boolBusqueda){
         return (
-            <Redirect to="/busqueda"/>
+            <Redirect to="/pet/list"/>
         )
     }else if(boolMisMascotas){
         return (

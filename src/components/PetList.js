@@ -61,7 +61,7 @@ function PetList(props) {
 
     useEffect(()=>{
 
-        if(condicion != undefined) {
+        if(condicion == undefined) {
 
             getAllPets()
         }else{
