@@ -77,7 +77,7 @@ function AppHeader() {
 
         setBoolBusqueda(true)
 
-
+        window.location.reload(false)
     }
 
     useEffect(()=>{
