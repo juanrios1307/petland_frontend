@@ -279,7 +279,7 @@ const PetUpdate = () => {
                                 label="Nombre "
                                 rules={[{ message: 'Por favor ingresa el nombre de la mascota!', whitespace: true}]}
                             >
-                                <Input/>
+                                <Input placeholder={nombre}/>
                             </Form.Item>
 
                             <Form.Item
@@ -287,7 +287,7 @@ const PetUpdate = () => {
                                 label="Ciudad"
                                 rules={[{ message: 'Por favor ingresa la ciudadN de la mascota!', whitespace: true}]}
                             >
-                                <Input/>
+                                <Input placeholder={ciudad}/>
                             </Form.Item>
 
                             <Form.Item
@@ -295,7 +295,7 @@ const PetUpdate = () => {
                                 label="Raza "
                                 rules={[{ message: 'Por favor ingresa la raza!'}]}
                             >
-                                <Input/>
+                                <Input  placeholder={raza}/>
                             </Form.Item>
 
                             <Form.Item
@@ -309,7 +309,7 @@ const PetUpdate = () => {
                                 ]}
                             >
 
-                                <Input />
+                                <Input  placeholder={color}/>
 
                             </Form.Item>
 
@@ -319,7 +319,7 @@ const PetUpdate = () => {
                                 rules={[{ message: 'Por favor ingresa la edad en años!'}]}
                             >
 
-                                <Input />
+                                <Input placeholder={edad} />
 
 
                             </Form.Item>

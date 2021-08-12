@@ -6,7 +6,6 @@ import {
 } from 'antd';
 import Swal from "sweetalert2";
 import {Redirect} from "react-router-dom";
-import Http from "../libs/http";
 import Axios from "axios"
 
 const formItemLayout = {

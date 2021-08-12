@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {Card, Row, Col, Image, Carousel, Rate, Form} from 'antd';
+import {Card, Row, Col, Image} from 'antd';
 
 
 import travel from "../assets/images/travel.png"

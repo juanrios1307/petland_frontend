@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import {Redirect} from "react-router-dom";
 import {Anchor, Drawer, Button, Form, Cascader, Input} from 'antd';
 import {UserOutlined} from '@ant-design/icons';
-import Http from "../libs/http";
 
 const { Link } = Anchor;
 
@@ -76,7 +75,7 @@ function AppHeader() {
 
         localStorage.setItem("condicion",values.pet)
 
-        setBoolMisMascotas(true)
+        setBoolBusqueda(true)
 
 
     }

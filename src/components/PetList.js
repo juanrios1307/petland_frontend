@@ -45,7 +45,6 @@ function PetList(props) {
             headers: {
                 'condicion':condicion
             },
-            d
 
         };
 
