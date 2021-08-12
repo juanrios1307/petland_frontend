@@ -117,11 +117,17 @@ function PetListMine(props) {
         return(
             <Redirect to="/pet/detail"/>
         )
-    }else {
+    }else if(updateBool){
+        return(
+            <Redirect to="/pet/update"/>
+        )
+    } else {
 
         return (
             <div id="hero" className="busquedaBlock">
-
+                <div>
+                    <h1>H</h1>
+                </div>
                 {pets.map(item => {
                     return (
                         <Row gutter={[16, 16]}>

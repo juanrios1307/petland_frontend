@@ -84,7 +84,7 @@ function PetDetail() {
             <div id="pricing" className="block pricingBlock bgGray">
                 <div className="container-fluid">
                     <div className="titleHolder">
-                        <h2>{nombreU}</h2>
+                        <h2>{nombre}</h2>
                         <div className="site-card-wrapper">
                             <Row gutter={[16, 16]}>
 

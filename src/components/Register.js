@@ -126,6 +126,10 @@ const AppRegistrationForm = () => {
                                         required: true,
                                         message: 'Por favor ingresa tu contraseña!',
                                     },
+                                    {
+                                        min:6,
+                                        message: 'Tu contraseña debe contener mas de 6 caracteres!',
+                                    },
                                 ]}
                                 hasFeedback
                             >

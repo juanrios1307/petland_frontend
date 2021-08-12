@@ -90,7 +90,9 @@ function PetList(props) {
 
         return (
             <div id="hero" className="busquedaBlock">
-
+                <div>
+                    <h1>H</h1>
+                </div>
                 {pets.map(item => {
                     return (
                         <Row gutter={[16, 16]}>

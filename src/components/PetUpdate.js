@@ -107,6 +107,7 @@ const PetUpdate = () => {
     const Update = async(values) => {
 
         const token = localStorage.getItem("token")
+        var id =(localStorage.getItem('pet'))
 
         if(values.ciudad == undefined){
             values.ciudad=ciudad
@@ -155,7 +156,8 @@ const PetUpdate = () => {
             method: 'put',
             url: url ,
             headers: {
-                'access-token': token
+                'access-token': token,
+                'pet':id
             },
             data: values
 
