@@ -74,7 +74,7 @@ function AppHeader() {
 
     const buscar = async(values) => {
 
-
+        localStorage.setItem("condicion",values.pet)
 
         setBoolMisMascotas(true)
 
@@ -127,7 +127,7 @@ function AppHeader() {
                             >
                                 <Form.Item
                                     name="pet"
-                                    rules={[{required: true, message: 'Por favor ingresa el nombre, raza o tipo de una mascota!'}]}
+                                    rules={[{required: true, message: 'Por favor ingresa el nombre, raza o tipo de una mascota!' ,  min: 3}]}
                                 >
 
                                     <Input placeholder="Search" />

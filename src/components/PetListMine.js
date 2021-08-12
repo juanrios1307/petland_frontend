@@ -20,7 +20,7 @@ function PetListMine(props) {
     };
 
 
-    const getAllPets = async() =>{
+    const getMyPets = async() =>{
 
         setPets([])
 
@@ -45,13 +45,10 @@ function PetListMine(props) {
         console.log(data)
     }
 
-    const getPetsBySearch = async(filter) =>{
-
-    }
 
 
     useEffect(()=>{
-        getAllPets()
+        getMyPets()
 
     },[])
 
@@ -71,7 +68,7 @@ function PetListMine(props) {
     const edit = (id) =>{
         console.log("edit")
 
-        localStorage.setItem("edit_id",id)
+        localStorage.setItem("pet",id)
 
         setupdateBool(true)
     }

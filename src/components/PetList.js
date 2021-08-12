@@ -13,6 +13,7 @@ function PetList(props) {
 
     const [pets,setPets]=useState([])
 
+    const condicion = localStorage.getItem("condicion")
 
     const gridStyle = {
         textAlign: 'center',
@@ -30,16 +31,47 @@ function PetList(props) {
         console.log(data)
     }
 
-    const getPetsBySearch = async(filter) =>{
+    const getPetsBySearch = async() =>{
+
+
+
+        const url='http://localhost:5000/api/pet/search'
+
+        setPets([])
+
+        const config = {
+            method: 'get',
+            url: url ,
+            headers: {
+                'condicion':condicion
+            },
+            d
+
+        };
+
+        const response = await Axios(config)
+
+
+        var data = response.data.data
+
+        await setPets(data)
+        console.log(data)
 
     }
 
 
     useEffect(()=>{
-        getAllPets()
+
+        if(condicion != undefined) {
+
+            getAllPets()
+        }else{
+
+            getPetsBySearch()
+        }
 
     },[])
-
+    
 
 
 
