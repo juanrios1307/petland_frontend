@@ -24,7 +24,7 @@ function PetListMine(props) {
 
         setPets([])
 
-        const url='http://localhost:5000/api/pet/mine/'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/mine/'
 
         const token=localStorage.getItem('token')
 
@@ -75,7 +75,7 @@ function PetListMine(props) {
 
     const eliminar = async (id) =>{
 
-        var url='http://localhost:5000/api/pet/'
+        var url='https://shielded-eyrie-97252.herokuapp.com/api/pet/'
 
         const token = localStorage.getItem("token")
 

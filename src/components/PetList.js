@@ -19,7 +19,7 @@ function PetList(props) {
         textAlign: 'center',
     };
 
-    const url='http://localhost:5000/api/pet/'
+    const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/'
     const getAllPets = async() =>{
 
         setPets([])
@@ -35,7 +35,7 @@ function PetList(props) {
 
 
 
-        const url='http://localhost:5000/api/pet/search'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/search'
 
         setPets([])
 
@@ -70,7 +70,7 @@ function PetList(props) {
         }
 
     },[])
-    
+
 
 
 

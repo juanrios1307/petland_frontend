@@ -79,7 +79,7 @@ const PetUpdate = () => {
         var id =(localStorage.getItem('pet'))
         setId(id)
 
-        const url='http://localhost:5000/api/pet/detail/'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/detail/'
 
         const config = {
             method: 'get',
@@ -150,7 +150,7 @@ const PetUpdate = () => {
         console.log(values)
 
 
-        const url='http://localhost:5000/api/pet/'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/'
 
         const config = {
             method: 'put',

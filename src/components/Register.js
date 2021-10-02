@@ -42,7 +42,7 @@ const AppRegistrationForm = () => {
 
     const Register = async(values) => {
 
-        const url='http://localhost:5000/api/user/'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/user/'
 
         const config = {
             method: 'post',
