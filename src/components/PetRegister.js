@@ -250,14 +250,6 @@ const PetRegister = () => {
                                 name="edad"
                                 label="Edad"
                                 rules={[{required: true, message: 'Por favor ingresa la edad en años!'},
-                                    {
-                                        min:0,
-                                        message: 'Tu mascota debe tener una edad mayor a 0!',
-                                    },
-                                    {
-                                        max:150,
-                                        message: 'Tu mascota debe tener una edad menor a 150!',
-                                    },
 
                                 ]}
                             >
