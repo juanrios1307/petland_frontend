@@ -9,18 +9,22 @@ const options = [
     {
         value: 1,
         label: 'Cerrar Sesión',
+        id:1
     },
     {
         value: 2,
         label: 'Mis Mascotas',
+        id:2
     },
     {
         value: 3,
         label: 'Reportar Mascota',
+        id:3
     },
     {
         value: 4,
         label: 'Registrar Mascota',
+        id:4
     }
 
 ];

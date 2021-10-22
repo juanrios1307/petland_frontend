@@ -260,9 +260,9 @@ const PetRegister = () => {
                                 label="Tamaño "
                                 rules={[{required: true, message: 'Por Favor ingresa un tamaño!'}]}>
                                 <Select onChange={e=>setSize(e)}>
-                                    <Option key="grande">Grande</Option>
-                                    <Option key="mediano">Mediano</Option>
-                                    <Option key="pequeño">Pequeño</Option>
+                                    <Option key="grande" id="grande">Grande</Option>
+                                    <Option key="mediano" id="mediano">Mediano</Option>
+                                    <Option key="pequeño" id="pequeño">Pequeño</Option>
                                 </Select>
                             </Form.Item>
 
@@ -272,7 +272,7 @@ const PetRegister = () => {
                                 rules={[{required: true, message: 'Por Favor Elije El tipo de tu Establecimiento!'}]}>
                                 <Select onChange={e=>setTipo(e)}>
                                     {tipos.map(i =>(
-                                        <Option key={i} value={i}>{i}</Option>
+                                        <Option key={i} value={i} id={i}>{i}</Option>
                                     ))}
                                 </Select>
                             </Form.Item>
