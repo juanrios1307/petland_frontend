@@ -5,7 +5,7 @@ import {
     Select,
     Button,
     Upload,
-    Modal,
+    Modal, InputNumber,
 } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -73,7 +73,10 @@ const PetRegister = () => {
 
 
         values.tipo=values.tipo.toLowerCase()
-        values.imagen = await uploadImage()
+
+        if(fileList != undefined || fileList.length>0) {
+            values.imagen = await uploadImage()
+        }
 
 
         console.log(values)
@@ -246,10 +249,20 @@ const PetRegister = () => {
                             <Form.Item
                                 name="edad"
                                 label="Edad"
-                                rules={[{required: true, message: 'Por favor ingresa la edad en años!'}]}
+                                rules={[{required: true, message: 'Por favor ingresa la edad en años!'},
+                                    {
+                                        min:0,
+                                        message: 'Tu mascota debe tener una edad mayor a 0!',
+                                    },
+                                    {
+                                        max:150,
+                                        message: 'Tu mascota debe tener una edad menor a 150!',
+                                    },
+
+                                ]}
                             >
 
-                                <Input />
+                                <InputNumber />
 
 
                             </Form.Item>
