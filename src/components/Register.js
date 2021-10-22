@@ -151,7 +151,7 @@ const AppRegistrationForm = () => {
                                             if (!value || getFieldValue('pwd') === value) {
                                                 return Promise.resolve();
                                             }
-                                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                                            return Promise.reject(new Error('Las contraseñas ingresadas no concuerdan!'));
                                         },
                                     }),
                                 ]}
