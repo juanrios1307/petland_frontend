@@ -250,11 +250,10 @@ const PetRegister = () => {
                                 name="edad"
                                 label="Edad"
                                 rules={[{required: true, message: 'Por favor ingresa la edad en años!'},
-
                                 ]}
                             >
 
-                                <InputNumber />
+                                <InputNumber/>
 
 
                             </Form.Item>
@@ -274,7 +273,7 @@ const PetRegister = () => {
                             <Form.Item
                                 name="tipo"
                                 label="Tipo "
-                                rules={[{required: true, message: 'Por Favor Elije El tipo de tu Establecimiento!'}]}>
+                                rules={[{required: true, message: 'Por Favor Elije El tipo de tu mascota!'}]}>
                                 <Select onChange={e=>setTipo(e)}>
                                     {tipos.map(i =>(
                                         <Option key={i} value={i} id={i}>{i}</Option>
