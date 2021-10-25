@@ -5,7 +5,7 @@ import {
     Select,
     Button,
     Upload,
-    Modal,
+    Modal, InputNumber,
 } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -73,45 +73,53 @@ const PetRegister = () => {
 
 
         values.tipo=values.tipo.toLowerCase()
-        values.imagen = await uploadImage()
+
+        if(fileList != null &&  fileList.length>=1) {
+            values.imagen = await uploadImage()
 
 
-        console.log(values)
+            console.log(values)
 
 
-        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/'
+            const url = 'https://shielded-eyrie-97252.herokuapp.com/api/pet/'
 
-        const config = {
-            method: 'post',
-            url: url ,
-            headers: {
-                'access-token': token
-            },
-            data: values
+            const config = {
+                method: 'post',
+                url: url,
+                headers: {
+                    'access-token': token
+                },
+                data: values
 
-        };
+            };
 
-        const response = await Axios(config)
+            const response = await Axios(config)
 
-        const mensaje = response.data.mensaje
-        const status=response.status
+            const mensaje = response.data.mensaje
+            const status = response.status
 
-        console.log(mensaje)
+            console.log(mensaje)
 
-        if(status===200){
-            Swal.fire({
-                title: mensaje,
+            if (status === 200) {
+                Swal.fire({
+                    title: mensaje,
 
-            })
+                })
 
-            setBool(true)
-            window.location.reload(false)
+                setBool(true)
+                window.location.reload(false)
+            } else {
+                Swal.fire({
+                    title: status,
+
+                })
+
+            }
         }else{
             Swal.fire({
-                title: status,
+                title: "Por favor suba una imagen de tipo jpg, png o jpeg",
 
             })
-
         }
     }
 
@@ -236,6 +244,14 @@ const PetRegister = () => {
                                         required: true,
                                         message: 'Por favor ingresa el color!',
                                     },
+                                    () => ({
+                                        validator(_, value) {
+                                            if (!value || value.match(/^[A-Za-z]+$/)) {
+                                                return Promise.resolve();
+                                            }
+                                            return Promise.reject(new Error('Formato de color invalido'));
+                                        },
+                                    }),
                                 ]}
                             >
 
@@ -249,7 +265,7 @@ const PetRegister = () => {
                                 rules={[{required: true, message: 'Por favor ingresa la edad en años!'}]}
                             >
 
-                                <Input />
+                                <InputNumber min={0} max={150}/>
 
 
                             </Form.Item>
@@ -288,7 +304,7 @@ const PetRegister = () => {
                                     onChange={handleChange}
                                     onRemove={handleRemove}
                                     customRequest={dummyRequest}
-                                    accept="image/png, image/jpeg"
+                                    accept="image/png, image/jpeg, image/jpg"
                                 >
                                     {fileList.length >= 1 ? null : uploadButton}
                                 </Upload>
