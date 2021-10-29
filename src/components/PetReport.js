@@ -83,7 +83,7 @@ const PetReport = () => {
         console.log(values)
 
 
-        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/report'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/adopt/'
 
         const config = {
             method: 'post',
@@ -190,7 +190,7 @@ const PetReport = () => {
 
     if(bool){
         return(
-            <Redirect to="/pet/list"/>
+            <Redirect to="/pet/myadopts"/>
         )
     }else if(localStorage.getItem("token")){
         return (
