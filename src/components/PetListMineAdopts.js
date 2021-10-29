@@ -24,7 +24,7 @@ function PetListMineAdopts(props) {
 
         setPets([])
 
-        const url='https://shielded-eyrie-97252.herokuapp.com/api/adopt/'
+        const url='http://localhost:5000/api/adopt/'
 
         const token=localStorage.getItem('token')
 

@@ -83,7 +83,7 @@ const PetReport = () => {
         console.log(values)
 
 
-        const url='https://shielded-eyrie-97252.herokuapp.com/api/adopt/'
+        const url='http://localhost:5000/api/adopt/'
 
         const config = {
             method: 'post',
@@ -190,14 +190,14 @@ const PetReport = () => {
 
     if(bool){
         return(
-            <Redirect to="/pet/myadopts"/>
+            <Redirect to="/pet/mylist"/>
         )
     }else if(localStorage.getItem("token")){
         return (
             <div id="hero" className="registerBlock registerPlaceBlock all">
                 <div className="container-fluid">
                     <div className="titleHolder">
-                        <h2>Registrar Mascota</h2>
+                        <h2>Dar Mascota en Adopción</h2>
                     </div>
 
                     <div className="block">
@@ -239,7 +239,7 @@ const PetReport = () => {
                                 label="Color"
                                 rules={[
                                     {
-                                        required: false,
+                                        required: true,
                                         message: 'Por favor ingresa el color!',
                                     },
                                 ]}
@@ -264,7 +264,7 @@ const PetReport = () => {
                             <Form.Item
                                 name="size"
                                 label="Tamaño "
-                                rules={[{required: false, message: 'Por Favor ingresa un tamaño!'}]}>
+                                rules={[{required: true, message: 'Por Favor ingresa un tamaño!'}]}>
                                 <Select onChange={e=>setSize(e)}>
                                     <Option key="grande">Grande</Option>
                                     <Option key="mediano">Mediano</Option>
@@ -275,7 +275,7 @@ const PetReport = () => {
                             <Form.Item
                                 name="tipo"
                                 label="Tipo "
-                                rules={[{required: false, message: 'Por Favor Elije El tipo de tu Establecimiento!'}]}>
+                                rules={[{required: true, message: 'Por Favor Elije El tipo de la Mascota!'}]}>
                                 <Select onChange={e=>setTipo(e)}>
                                     {tipos.map(i =>(
                                         <Option key={i} value={i}>{i}</Option>
