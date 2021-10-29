@@ -4,6 +4,8 @@ import {Card, Row, Col, Image} from 'antd';
 
 import travel from "../assets/images/travel.png"
 import Axios from "axios";
+import Swal from "sweetalert2";
+import {Redirect} from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -22,7 +24,7 @@ function PetDetail() {
     const [nombre, setNombre] = useState('');
     const [size, setSize] = useState('');
     const [tipo, setTipo] = useState('');
-
+    const [adopcion, setAdopcion] = useState('');
 
     //Datos User
     const [correo, setCorreo] = useState('');
@@ -30,6 +32,9 @@ function PetDetail() {
     const [telefono, setTelefono] = useState('');
     const [ciudadU, setCiudadU] = useState('');
 
+
+    //bool
+    const [bool, setBool] = useState(false);
 
     const getData = async() =>{
 
@@ -59,6 +64,8 @@ function PetDetail() {
         setNombre(data.nombre)
         setSize(data.size)
         setTipo(data.tipo)
+        setAdopcion(data.adopcion)
+
 
         setCorreo(user.correo)
         setNombreU(user.nombre)
@@ -70,6 +77,47 @@ function PetDetail() {
 
     }
 
+    const adoptar = async()=>{
+        const url='http://localhost:5000/api/adopt/'
+
+        const token = localStorage.getItem("token")
+
+        const config = {
+            method: 'put',
+            url: url ,
+            headers: {
+                'access-token': token,
+                pet:id
+            },
+
+        };
+
+        const response = await Axios(config)
+
+        const mensaje = response.data.mensaje
+        const status=response.status
+
+        console.log(mensaje)
+
+        if(status===200){
+
+            setBool(true)
+
+            Swal.fire({
+                title: mensaje,
+
+            })
+
+            window.location.reload(false)
+        }else{
+            Swal.fire({
+                title: status,
+
+            })
+
+        }
+    }
+
 
     useEffect(()=>{
 
@@ -78,63 +126,75 @@ function PetDetail() {
 
     },[])
 
-    return (
-        <div id="hero" className="paquetesBlock">
+    if(bool){
+        return(
+            <Redirect to="/pet/myadopts"/>
+        )
+    }else {
 
-            <div id="pricing" className="block pricingBlock bgGray">
-                <div className="container-fluid">
-                    <div className="titleHolder">
-                        <h2>{nombre}</h2>
-                        <div className="site-card-wrapper">
-                            <Row gutter={[16, 16]}>
+        return (
+            <div id="hero" className="paquetesBlock">
 
-                                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }}>
-                                    <div>
-                                        <Image src={imagen} alt="no imagen a mostrar" />
-                                    </div>
-                                </Col>
-                                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }}>
+                <div id="pricing" className="block pricingBlock bgGray">
+                    <div className="container-fluid">
+                        <div className="titleHolder">
+                            <h2>{nombre}</h2>
+                            <div className="site-card-wrapper">
+                                <Row gutter={[16, 16]}>
 
-                                    <Card
-                                        hoverable
-                                    >
-                                        <Meta title={nombre} description={tipo} />
-                                        <p>{ciudad}</p>
-                                        <p>{"Raza: "+raza}</p>
-                                        <p>{"Color: "+ color}</p>
-                                        <p>{"Edad: "+ edad}</p>
-                                        <p>{"Tamaño: "+ size}</p>
-                                    </Card>
+                                    <Col xs={{span: 24}} sm={{span: 24}} md={{span: 24}}>
+                                        <div>
+                                            <Image src={imagen} alt="no imagen a mostrar"/>
+                                        </div>
+                                    </Col>
+                                    <Col xs={{span: 24}} sm={{span: 24}} md={{span: 24}}>
 
+                                        <Card
+                                            hoverable
+                                        >
+                                            <Meta title={nombre} description={tipo}/>
+                                            <p>{ciudad}</p>
+                                            <p>{"Raza: " + raza}</p>
+                                            <p>{"Color: " + color}</p>
+                                            <p>{"Edad: " + edad}</p>
+                                            <p>{"Tamaño: " + size}</p>
 
-                                </Col>
+                                            {adopcion && (
+                                                <button onClick={adoptar}>Adoptar Mascota</button>
+                                            )}
 
-                                <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 24 }}>
-
-                                    <Card
-                                        hoverable
-                                        cover={<img alt="Test" src={travel} width={200} />}
-
-                                    >
-                                        <Meta title={"Datos De Contacto"} />
-                                        <p>{"Correo: "+ correo}</p>
-                                        <p>{"Nombre: "+ nombreU}</p>
-                                        <p>{"Ciudad: "+ ciudadU}</p>
-                                        <p>{"Telefono: "+ telefono}</p>
-                                    </Card>
+                                        </Card>
 
 
-                                </Col>
+                                    </Col>
 
-                            </Row>
+                                    <Col xs={{span: 24}} sm={{span: 24}} md={{span: 24}}>
+
+                                        <Card
+                                            hoverable
+                                            cover={<img alt="Test" src={travel} width={200}/>}
+
+                                        >
+                                            <Meta title={"Datos De Contacto"}/>
+                                            <p>{"Correo: " + correo}</p>
+                                            <p>{"Nombre: " + nombreU}</p>
+                                            <p>{"Ciudad: " + ciudadU}</p>
+                                            <p>{"Telefono: " + telefono}</p>
+                                        </Card>
+
+
+                                    </Col>
+
+                                </Row>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
-            </div>
 
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 export default PetDetail;
