@@ -18,11 +18,16 @@ const options = [
     },
     {
         value: 3,
-        label: 'Reportar Mascota',
+        label: 'Dar en Adopción Mascota',
         id:3
     },
     {
         value: 4,
+        label: 'Mis Adopciones',
+        id:3
+    },
+    {
+        value: 5,
         label: 'Registrar Mascota',
         id:4
     }
@@ -36,6 +41,7 @@ function AppHeader() {
     const [boolBusqueda, setBoolBusqueda] = useState(false);
     const [boolRegistrarMascota, setBoolRegistrarMascota] = useState(false);
     const [boolReportarMascota, setBoolReportarMascota] = useState(false);
+    const [boolMyAdopts, setBoolMyAdopts] = useState(false);
     const [boolMisMascotas, setBoolMisMascotas] = useState(false);
 
     const cerrarSesion = () =>{
@@ -59,6 +65,8 @@ function AppHeader() {
         }else if(value[0]===3){
             setBoolReportarMascota(true)
         }else if(value[0]===4){
+            setBoolMyAdopts(true)
+        }else if(value[0] ==5){
             setBoolRegistrarMascota(true)
         }
     }
@@ -103,7 +111,11 @@ function AppHeader() {
         )
     }else if(boolReportarMascota){
         return (
-            <Redirect to="/pet/report"/>
+            <Redirect to="/pet/adopt"/>
+        )
+    }else if(boolMyAdopts){
+        return (
+            <Redirect to="/pet/myadopts"/>
         )
     }else if(boolRegistrarMascota){
         return (

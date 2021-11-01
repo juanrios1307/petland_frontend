@@ -12,6 +12,7 @@ import PetReportPage from "./pages/PetReportPage";
 import PetUpdatePage from "./pages/PetUpdatePage";
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import MyAdopcionesPage from "./pages/MyAdopcionesPage";
 
 class App extends React.Component {
   render() {
@@ -25,9 +26,10 @@ class App extends React.Component {
 
               <Route exact path="/pet/detail" component={PetDetailPage}/>
               <Route exact path="/pet/list" component={PetListPage}/>
+              <Route exact path="/pet/myadopts" component={MyAdopcionesPage}/>
               <Route exact path="/pet/mylist" component={PetListMinesPage}/>
               <Route exact path="/pet/register" component={PetRegisterPage}/>
-              <Route exact path="/pet/report" component={PetReportPage}/>
+              <Route exact path="/pet/adopt" component={PetReportPage}/>
               <Route exact path="/pet/update" component={PetUpdatePage}/>
 
           </Switch>
