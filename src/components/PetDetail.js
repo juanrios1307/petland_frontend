@@ -229,9 +229,9 @@ function PetDetail() {
                                                                 <Col xs={{span: 24}} sm={{span: 24}} md={{span: 12}}>
                                                                     <Meta title={item.nombre}/>
 
-                                                                    <h2>{item.cantidad}</h2>
-                                                                    <p>{item.raza}</p>
-                                                                    <p>{item.color}</p>
+                                                                    <h2>{item.nombre}</h2>
+                                                                    <p>{item.nombre}</p>
+                                                                    <p>{item.nombre}</p>
 
 
                                                                 </Col>
