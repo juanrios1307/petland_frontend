@@ -87,14 +87,11 @@ function PetDetail() {
         var id =(localStorage.getItem('pet'))
         setId(id)
 
-        const url='https://shielded-eyrie-97252.herokuapp.com/api/pet/detail/'
+        const url='https://shielded-eyrie-97252.herokuapp.com/api/products/'
 
         const config = {
             method: 'get',
-            url: url,
-            headers: {
-                'id':id
-            }
+            url: url
         };
 
         const response = await Axios(config)
@@ -225,26 +222,11 @@ function PetDetail() {
 
                                                         >
                                                             <Row gutter={[16, 16]}>
-
                                                                 <Col xs={{span: 24}} sm={{span: 24}} md={{span: 12}}>
-                                                                    <Meta title={item.nombre}/>
+                                                                    <Meta title={item.Producto}/>
 
-                                                                    <h2>{item.nombre}</h2>
-                                                                    <p>{item.nombre}</p>
-                                                                    <p>{item.nombre}</p>
-
-
-                                                                </Col>
-
-                                                                <Col xs={{span: 24}} sm={{span: 24}} md={{span: 12}}>
-
-                                                                    <Image
-                                                                        src={item.imagen}
-                                                                        alt={"No Hay Imagenes para Mostrar"}
-                                                                        width={400}
-                                                                    />
-
-
+                                                                    <h2>{item.Cantidad}</h2>
+                                                                    <p>{item.Precio}</p>
                                                                 </Col>
                                                             </Row>
                                                         </Card>
