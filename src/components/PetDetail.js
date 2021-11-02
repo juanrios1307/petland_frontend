@@ -210,6 +210,8 @@ function PetDetail() {
 
                                     </Col>
 
+                                    <h2>Productos Disponibles</h2>
+
                                     <Col xs={{span: 24}} sm={{span: 24}} md={{span: 24}}>
 
                                         {productos.map(item => {
@@ -225,8 +227,8 @@ function PetDetail() {
                                                                 <Col xs={{span: 24}} sm={{span: 24}} md={{span: 12}}>
                                                                     <Meta title={item.Producto}/>
 
-                                                                    <h2>{item.Cantidad}</h2>
-                                                                    <p>{item.Precio}</p>
+                                                                    <h2>Cantidad Disponible: {item.Cantidad}</h2>
+                                                                    <p>Precio: ${item.Precio}</p>
                                                                 </Col>
                                                             </Row>
                                                         </Card>
