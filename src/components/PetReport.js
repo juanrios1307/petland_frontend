@@ -204,7 +204,7 @@ const PetReport = () => {
             <div id="hero" className="registerBlock registerPlaceBlock all">
                 <div className="container-fluid">
                     <div className="titleHolder">
-                        <h2>Dar Mascota en Adopción</h2>
+                        <h2>Dar Mascota en Adopción (Registrar mascota)</h2>
                     </div>
 
                     <div className="block">
