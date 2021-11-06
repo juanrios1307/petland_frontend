@@ -118,6 +118,11 @@ const PetReport = () => {
                 })
 
             }
+        }else{
+            Swal.fire({
+                title: "Por favor suba una imagen de tipo jpg, png o jpeg",
+
+            })
         }
     }
 
@@ -243,7 +248,7 @@ const PetReport = () => {
                                     {
                                         required: true,
                                         message: 'Por favor ingresa el color!',
-                                    },,
+                                    },
                                     () => ({
                                         validator(_, value) {
                                             if (!value || value.match(/^[A-Za-z]+$/)) {
