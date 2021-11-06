@@ -255,7 +255,7 @@ const PetReport = () => {
                                 ]}
                             >
 
-                                <InputNumber min={0} max={150}/>
+                                <Input />
 
                             </Form.Item>
 
@@ -265,7 +265,7 @@ const PetReport = () => {
                                 rules={[{required: false, message: 'Por favor ingresa la edad en años!'}]}
                             >
 
-                                <Input />
+                                <InputNumber min={0} max={150}/>
 
 
                             </Form.Item>
