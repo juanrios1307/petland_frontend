@@ -5,7 +5,7 @@ import {
     Select,
     Button,
     Upload,
-    Modal,
+    Modal, InputNumber,
 } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 
@@ -241,11 +241,19 @@ const PetReport = () => {
                                     {
                                         required: true,
                                         message: 'Por favor ingresa el color!',
-                                    },
+                                    },,
+                                    () => ({
+                                        validator(_, value) {
+                                            if (!value || value.match(/^[A-Za-z]+$/)) {
+                                                return Promise.resolve();
+                                            }
+                                            return Promise.reject(new Error('Formato de color invalido'));
+                                        },
+                                    }),
                                 ]}
                             >
 
-                                    <Input />
+                                <InputNumber min={0} max={150}/>
 
                             </Form.Item>
 
