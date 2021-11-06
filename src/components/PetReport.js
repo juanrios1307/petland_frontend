@@ -76,46 +76,48 @@ const PetReport = () => {
 
             values.tipo = values.tipo.toLowerCase()
         }
+        if(fileList != null &&  fileList.length>=1) {
 
-        values.imagen = await uploadImage()
-
-
-        console.log(values)
+            values.imagen = await uploadImage()
 
 
-        const url='https://shielded-eyrie-97252.herokuapp.com/api/adopt/'
+            console.log(values)
 
-        const config = {
-            method: 'post',
-            url: url ,
-            headers: {
-                'access-token': token
-            },
-            data: values
 
-        };
+            const url = 'https://shielded-eyrie-97252.herokuapp.com/api/adopt/'
 
-        const response = await Axios(config)
+            const config = {
+                method: 'post',
+                url: url,
+                headers: {
+                    'access-token': token
+                },
+                data: values
 
-        const mensaje = response.data.mensaje
-        const status=response.status
+            };
 
-        console.log(mensaje)
+            const response = await Axios(config)
 
-        if(status===200){
-            Swal.fire({
-                title: mensaje,
+            const mensaje = response.data.mensaje
+            const status = response.status
 
-            })
+            console.log(mensaje)
 
-            setBool(true)
-            window.location.reload(false)
-        }else{
-            Swal.fire({
-                title: status,
+            if (status === 200) {
+                Swal.fire({
+                    title: mensaje,
 
-            })
+                })
 
+                setBool(true)
+                window.location.reload(false)
+            } else {
+                Swal.fire({
+                    title: status,
+
+                })
+
+            }
         }
     }
 
